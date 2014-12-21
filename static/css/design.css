@@ -1,0 +1,31 @@
+/** html **/
+html {
+	font-family: arial;
+	font-size: 14px;
+	background-color: white;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	min-height: 100%;
+	margin: auto;
+}
+
+#container {
+	width: 1200px;
+	margin: auto;
+	overflow: hidden; 
+}
+
+/** HEADER **/
+header {
+
+}
+
+/** CONTENT **/
+
+/** FOOTER **/
+footer {
+
+}

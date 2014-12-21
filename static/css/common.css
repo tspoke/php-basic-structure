@@ -1,0 +1,84 @@
+/** commons **/
+.clear { clear: both;  }
+
+.right { float: right; }
+.left   { float: left;  }
+.overflow-hidden   { overflow: hidden;  }
+
+.center { margin: auto; }
+.text-center { text-align: center; }
+.align-center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hidden { display : none; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+.bold { font-weight: bold; }
+
+/* marges et padding */
+.margin-header 			{ margin-top: 0px !important; }
+
+.margin-top-small 		{ margin-top: 10px !important; }
+.margin-top-medium 		{ margin-top: 20px !important; }
+.margin-top-big 			{ margin-top: 40px !important; }
+.margin-top-bigger 		{ margin-top: 100px !important; }
+.margin-top-biggest 		{ margin-top: 200px !important; }
+
+.margin-bottom-small	{ margin-bottom: 10px !important; }
+.margin-bottom-medium 	{ margin-bottom: 20px !important; }
+.margin-bottom-big		{ margin-bottom: 40px !important; }
+
+.margin-left-small 		{ margin-left: 10px !important; }
+.margin-left-medium 		{ margin-left: 20px !important; }
+.margin-left-big 		{ margin-left: 40px !important; }
+
+.margin-right-small		{ margin-right: 10px !important; }
+.margin-right-medium 	{ margin-right: 20px !important; }
+.margin-right-big		{ margin-right: 40px !important; }
+
+.padding-top-small 		{ padding-top: 10px !important; }
+.padding-top-medium 		{ padding-top: 20px !important; }
+.padding-top-big 		{ padding-top: 40px !important; }
+.padding-top-bigger 		{ padding-top: 100px !important; }
+.padding-top-biggest 	{ padding-top: 200px !important; }
+
+.padding-bottom-small	{ padding-bottom: 10px !important; }
+.padding-bottom-medium 	{ padding-bottom: 20px !important; }
+.padding-bottom-big		{ padding-bottom: 40px !important; }
+
+.padding-small	{ padding: 10px !important; }
+.padding-medium 	{ padding: 20px !important; }
+.padding-big	{ padding: 40px !important; }
+
+.margin-small 		{ margin: 10px !important; }
+.margin-medium 		{ margin: 20px !important; }
+.margin-big 			{ margin: 40px !important; }
+.margin-bigger 		{ margin: 100px !important; }
+.margin-biggest		{ margin: 200px !important; }
+
+.width-100 { width: 100% !important; }
+
+
+/* forms */
+input {
+	font-size: 0.9em;
+}
+
+input[type='text'], input[type='password'] {
+	padding: 6px 8px;
+	background: #f6efcb;
+	border: 0;
+	outline: 0;
+	border-radius: 2px;
+	border: 1px solid black;
+}
+	input[type='text']:focus, input[type='password']:focus{
+		background: #faffbd;
+	}
+
+input[type=text] {
+	
+}
