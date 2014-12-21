@@ -1,5 +1,5 @@
 <?php
-defined("_3gm_token_") or die('');
+defined("_uniq_token_") or die('');
 
 class Autoload {
 	public static $folders = array("models" => "models", "core" => "core", "classes" => "classes");

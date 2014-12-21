@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-define("_3gm_token_", TRUE);
+define("_uniq_token_", TRUE);
 include_once $_SERVER['DOCUMENT_ROOT']."/core/init.php";
 
 //parsing
