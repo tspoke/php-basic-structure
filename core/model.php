@@ -5,7 +5,7 @@ defined("_uniq_token_") or die('');
 * @author 	Thibaud GIOVANNETTI
 */
 abstract class Model extends ConnectionHandler {
-	protected $bdd = null;
+	protected $db = null;
 
 	/** 
 	* @brief 	Liste des tables liées et des paramètres de jointure
@@ -63,7 +63,7 @@ abstract class Model extends ConnectionHandler {
 		if(!is_null($params))
 			return $this->_findJoin($params);
 		
-		$req = $this->bdd->query("SELECT * FROM ".$this->table);
+		$req = $this->db->query("SELECT * FROM ".$this->table);
 		return $req->fetchAll();
 	}
 
@@ -136,7 +136,7 @@ abstract class Model extends ConnectionHandler {
 		if(!is_null($limit) AND is_int($limit))
 			$sql .= " LIMIT ".$limit;
 
-		$req = $this->bdd->prepare($sql);
+		$req = $this->db->prepare($sql);
 		
 		foreach($params as $field => &$value){
 			$req->bindParam(":".$field, $value, PDO::PARAM_STR);
@@ -182,7 +182,7 @@ abstract class Model extends ConnectionHandler {
 		if(!is_null($limit) AND is_int($limit))
 			$sql .= " LIMIT ".$limit;
 			
-		$req = $this->bdd->prepare($sql);
+		$req = $this->db->prepare($sql);
 		
 		foreach($params as $field => &$value)
 			$req->bindParam(":".$field, $value, PDO::PARAM_STR);
@@ -224,7 +224,7 @@ abstract class Model extends ConnectionHandler {
 		}
 		
 		$sql = "INSERT INTO ".$this->table."(".$sql.") VALUES (".$values.")";
-		$req = $this->bdd->prepare($sql);
+		$req = $this->db->prepare($sql);
 		
 		foreach($params as $field => &$value){
 			$req->bindParam(":".$field, $value, PDO::PARAM_STR);
@@ -232,7 +232,7 @@ abstract class Model extends ConnectionHandler {
 
 		$req->execute();
 
-		return $this->bdd->lastInsertId();
+		return $this->db->lastInsertId();
 	}
 	
 }

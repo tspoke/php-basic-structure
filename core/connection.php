@@ -1,12 +1,16 @@
 <?php
 require_once "Config.inc";
 
+/**
+* Connection Singleton
+* TODO 	L'utilisation d'un singleton n'est pas vraiment approprié. Il vaudrait mieux demander la connexion et la relâcher à chaque requête.
+*/
 class Connection {
 	private static $m_instance = null;
-	private $bdd = null;
+	private $db = null;
 	
 	private function __construct(){ 
-		$this->bdd = $this->connect();
+		$this->db = $this->connect();
 	}
 	
 	private function connect(){
@@ -21,10 +25,11 @@ class Connection {
 		}
 	}
 	
+	// get the connection in a static/singleton way
 	public static function instance(){
 		if(self::$m_instance == null){
 			self::$m_instance = new Connection();
 		}
-		return self::$m_instance->bdd;
+		return self::$m_instance->db;
 	}
 }
