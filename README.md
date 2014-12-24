@@ -18,7 +18,7 @@ Enfin, vous n'aurez pas besoin de lire 500 pages de documentation pour le compre
 </p>
 
 <h2>Remarques</h2>
-<p>Je ne jette pas la pierre aux gros framework, au contraire je respecte énormément les outils qu'il développent. Je constate juste que beaucoup de développeur amateurs/débutants,
+<p>Je ne jette pas la pierre aux développeurs de gros frameworks, au contraire je respecte énormément les outils qu'ils développent. Je constate juste que beaucoup de développeur amateurs/débutants,
 qui codent pour le plaisir, ne s'y penchent que très rarement. Cela souvent à cause de la complexité et le temps de mise en route de tels outils.<br />
 Utiliser un petit framework permet de tester une nouvelle architecture sans devoir lire des kilomètres de documentation.<br /><br />
 
@@ -142,12 +142,42 @@ $this->User->add(array('age' => 25, 'taille' => 176, 'nom' => 'Spoke')); // INSE
 ```
 
 <p>
-Il y a peu de fonctions dans Model.php. C'est volontaire et cela fait parti du concept de ce projet de laisser au programmeur le soin de coder les 
+Il y a peu de méthodes dans Model.php. C'est volontaire et cela fait parti du concept de ce projet de laisser au programmeur le soin de coder les 
 requêtes qui n'entrent pas le champ d'utilisation de Model.php <br />
 Le tableau de paramètre est uniquement traité comme <b>AND</b> pour la requête, pas de <i>OR</i>.
 Vous pouvez automatiser une jointure (systématique) en modifiant la variable <b>$this->dependencies</b> d'un modèle. <br />
 <strong>Toutes les requêtes de Model.php sont des requêtes préparées ! </strong>
 </p>
+
+<h4>Requêtes SQL personnalisées</h4>
+<p>
+	Toutes les classes qui héritent de Model possèdent un pointeur sur la connexion vers la base de données (voir TODO sur la classe core/Connection).<br />
+	Vous pouvez donc effectuer facilement une requête dans n'importe quel modèle.
+</p>
+
+```php
+// dans une classe héritant de model
+class News extends Model {
+	// $start et $end en INTEGER
+	public function getNewsBetweenTwoDates($start, $end){
+		// $this->db est le pointeur vers la connexion
+		$req = $this->db->prepare("SELECT * FROM news WHERE date_publication BETWEEN :start AND :end");
+		$req->bindParam('start', $start, PDO::PARAM_INT); // utilisation standard de PDO
+		$req->bindParam('end', $end, PDO::PARAM_INT);
+		$req->execute();
+
+		return $req->fetchAll();
+	}
+
+	// Autre exemple avec une query simple 
+	// Remarque 1 : Je vous conseille de ne jamais passer des variables dans les query simple mais d'utiliser les requêtes préparées pour le faire.
+	// Remarque 2 : C'est juste un exemple car Model contient déjà une méthode pour ce genre de requête => $this->find(array('id' => $id))
+	public function getNews($id){
+		$req = $this->db->query("SELECT * FROM news WHERE id = ".intval($id));
+		return $req->fetchAll();
+	}
+}
+```
 
 <hr></hr>
 <h1>About</h1>
