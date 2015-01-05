@@ -59,11 +59,11 @@ abstract class Model extends ConnectionHandler {
 	/**
 	* Retourne tous les tuples correspondants à $params
 	*/
-	public function findAll(array $params = null){
+	public function findAll(array $params = null, $limit = 999999){
 		if(!is_null($params))
-			return $this->_findJoin($params);
+			return $this->_findJoin($params, $limit);
 		
-		$req = $this->db->query("SELECT * FROM ".$this->table);
+		$req = $this->bdd->query("SELECT * FROM ".$this->table." LIMIT ".intval($limit));
 		return $req->fetchAll();
 	}
 
