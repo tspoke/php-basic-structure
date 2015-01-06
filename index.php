@@ -27,8 +27,10 @@ require('controllers/'.$controller.'.php');
 $controller .= "Controller";
 $controller = new $controller();
 
-if(!method_exists($controller, $action))
+if(!method_exists($controller, $action)){
+	$params[2] = $action;
 	$action = "index";
+}
 
 if(method_exists($controller, $action)){
 	unset($params[0]);
