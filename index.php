@@ -47,7 +47,7 @@ if(method_exists($controller, $action)){
 			$controller->render();
 		}
 		else {
-			Handler::error404("Impossible d'appeler la fonction cible avec les paramètres passés");
+			Handler::error404("Error calling function with params");
 		}
 	}
 	catch (Exception $e){
@@ -55,4 +55,4 @@ if(method_exists($controller, $action)){
 	}
 }
 else
-	Handler::error404("Unhandled : the method doesn't exists in the controller => ".$action);
+	Handler::error404("Unhandled : the method doesn't exists in the controller => ".Tools::secure($action));
