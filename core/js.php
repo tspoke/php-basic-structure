@@ -121,7 +121,7 @@ class JS {
 	*/
 	public static function getHTML($url)
 	{
-		return "<script type='text/javascript' src='".WEBSITE.$url."'></script>
+		return "<script type='text/javascript' src='".URL.$url."'></script>
 		";
 	}
 }

@@ -98,7 +98,7 @@ class CSS {
 	*/
 	public static function getHTML($url)
 	{
-		return "<link href='".WEBSITE.$url."' rel='stylesheet' type='text/css' media='screen' />
+		return "<link href='".URL.$url."' rel='stylesheet' type='text/css' media='screen' />
 		";
 	}
 }

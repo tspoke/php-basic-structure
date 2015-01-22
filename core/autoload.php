@@ -2,7 +2,11 @@
 defined("_uniq_token_") or die('');
 
 class Autoload {
-	public static $folders = array("models" => "models", "core" => "core", "classes" => "classes");
+	public static $folders = array(
+		"models"  => "models", 
+		"core"    => "core", 
+		"classes" => "classes"
+	);
 	
 	public static function loader($class) {
 		//si on a une classe que en majuscule, on ne passe pas dans la découpe.

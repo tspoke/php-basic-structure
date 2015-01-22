@@ -1,10 +1,6 @@
 <?php
-// debug - delete this 2 lines in PROD
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 define("_uniq_token_", TRUE);
-include_once $_SERVER['DOCUMENT_ROOT']."/core/init.php";
+include_once __DIR__."/core/init.php";
 
 //parsing
 $params = explode('/', $_GET['p']);
