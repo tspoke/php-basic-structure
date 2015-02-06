@@ -23,17 +23,17 @@ abstract class Controller {
 				header($header);
 			
 			if(!in_array('header', $this->viewExcluded))
-				require(DOCUMENT_ROOT."/".WEBSITE."/views/header.php");
+				require(DOCUMENT_ROOT."/views/header.php");
 			
 			if(is_array($this->view)){
 				foreach($this->view as $view)
-					require(DOCUMENT_ROOT."/".WEBSITE."/views/".$view.".php");
+					require(DOCUMENT_ROOT."/views/".$view.".php");
 			}
 			else
-				require(DOCUMENT_ROOT."/".WEBSITE."/views/".$this->view.".php"); //inclusion de la vue
+				require(DOCUMENT_ROOT."/views/".$this->view.".php"); //inclusion de la vue
 			
 			if(!in_array('footer', $this->viewExcluded))
-				require(DOCUMENT_ROOT."/".WEBSITE."/views/footer.php");
+				require(DOCUMENT_ROOT."/views/footer.php");
 			
 			$this->after();
 		}

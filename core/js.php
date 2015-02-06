@@ -105,11 +105,13 @@ class JS {
 	* Permet d'ajouter un lien JS ou un dossier
 	*/
 	public static function add($link){
-		if(strpos($link, ".js") === false)
-			self::$modules[] = $link;
-		else {
+		if(strpos($link, ".js") === false){
 			if(substr($link , -1, 1) != "/")
 				$link .= "/";
+			self::$modules[] = $link;
+		}
+		else {
+			
 			self::$files[] = $link;
 		}
 	}

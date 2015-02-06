@@ -18,7 +18,7 @@ define("DOCUMENT_ROOT", realpath(__DIR__."/.."));
 * @example 									Empty if you want to use relative path
 * @example 		/sub-folder					In case of sub-folder hosting
 */
-define("URL", "");
+define("URL", "dev-izymatch");
 
 require(DOCUMENT_ROOT."/core/autoload.php");
 

@@ -1,5 +1,6 @@
 <?php
-require_once "Config.inc";
+defined("_uniq_token_") or die('');
+require_once "config.php";
 
 /**
 * Connection Singleton
