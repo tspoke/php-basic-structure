@@ -1,6 +1,5 @@
 <?php
 defined("_uniq_token_") or die('');
-define("PROD", false);
 
 /**
 * Debug options & tools
@@ -24,7 +23,7 @@ define("URL", "");
 require(DOCUMENT_ROOT."/core/autoload.php");
 
 // DEBUG
-if(PROD){
+if(!PROD){
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 }
