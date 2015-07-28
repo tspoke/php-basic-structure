@@ -2,15 +2,16 @@
 defined("_uniq_token_") or die('');
 
 /**
-* Debug options & tools
-*/
-define("PROD", false);
-
-/**
 * Absolute system path to website folder
 * @value 	 /var/www/my-website-folder
 */
 define("DOCUMENT_ROOT", realpath(__DIR__."/.."));
+
+/**
+* Debug status
+*/
+define("PROD", false);
+define("DEV", !PROD); // shortcut
 
 /**
 * Absolute or relative path to website folder
@@ -22,8 +23,8 @@ define("URL", "dev-izymatch");
 
 require(DOCUMENT_ROOT."/core/autoload.php");
 
-// DEBUG
-if(!PROD){
+// Show errors if dev-mode activate
+if(DEV){
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 }
