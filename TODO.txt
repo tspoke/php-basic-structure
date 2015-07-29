@@ -1,2 +1,0 @@
-- core/Includer.php
-- Autoload => changer le static dans les folders
