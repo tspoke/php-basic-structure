@@ -20,6 +20,9 @@ class Api extends Controller {
 		$this->headers["Content-type"] = "Content-Type: application/json; charset=UTF-8";
 		$this->sendHeader();
 
-		exit(json_encode($this->response));
+		$this->before();
+		$this->response["data"] = $this->vars;
+		echo json_encode($this->response);
+		$this->after();
 	}
 }

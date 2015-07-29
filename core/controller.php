@@ -54,8 +54,11 @@ abstract class Controller {
 		$this->$basename = new $basename();
 	}
 	
-	protected function set($vars){
-		$this->vars = array_merge($this->vars, $vars);
+	protected function set($vars, $value = null){
+		if(is_array($vars))
+			$this->vars = array_merge($this->vars, $vars);
+		else if($value != null)
+			$this->vars = array_merge($this->vars, array($vars => $value));
 	}
 	
 	public function	allowOnlyIfConnected(){
