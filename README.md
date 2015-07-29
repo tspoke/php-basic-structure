@@ -40,9 +40,10 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 <ol>
 	<li>Téléchargez le dossier complet</li>
 	<li>Copiez le contenu dans votre dossier de développement.</li>
-	<li>core/Config.inc : Modifiez vos informations de connexion à la base de données. Apache doit avoir le module rewrite d'activé !</li>
-	<li>core/init.php : Si besoin modifiez l'état du projet (production ou non) et les liens relatifs/absolus</li>
-	<li>Terminé</li>
+	<li>Si le module mod_rewrite n'est pas activé sur Apache, faites le.</li>
+	<li>core/config.php : Modifiez vos informations de connexion à la base de données.</li>
+	<li>core/init.php : Si besoin modifiez l'état du projet (production ou non) et les liens des constantes</li>
+	<li>C'est terminé. Des exemples sont programmés dans controllers/example.php</li>
 </ol>
 
 <h3>Choix techniques</h3>
