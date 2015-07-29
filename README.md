@@ -89,13 +89,14 @@ Si vous souhaitez ajouter du code CSS global à toute votre application vous pou
 Pour ajouter du CSS/JS spécifique à une page précise, vous pouvez le faire dans le contrôleur PHP avec la méthode statique de CSS/JS :<br />
 </p>
 ```php
-	CSS::add('fichier'); // ajoute un fichier CSS
-	CSS::add('dossier/'); // ajoute un dossier (tous les CSS contenues)
-	JS::add('fichier'); // ajoute un fichier JS
-	CSS::add('dossier/'); // ajoute un dossier (tous les JS contenus)
+	Includer::add('css', 'fichier'); // ajoute un fichier CSS
+	Includer::add('css', 'dossier/'); // ajoute un dossier (tous les CSS contenues)
+	Includer::add('js', 'fichier'); // ajoute un fichier JS
+	Includer::add('js', 'dossier/'); // ajoute un dossier (tous les JS contenus)
 ```
 
-<strong>Les fichiers CSS et JS doivent être situés dans static/css ou static/js.</strong>
+<strong>Tous les fichiers inclus par la classe Includer doivent être situés dans static/EXTENSION (ex: static/js, static/css, ...)</strong><br />
+<strong>Bon à savoir :</strong> n'importe quel type de fichier peut être inclu de cette manière. Il faut qu'il soit stocké dans un dossier portant le nom de l'extension que vous voulez utiliser.<br />
 </p>
 
 <h4>Passer des variables dans la vue</h4>
