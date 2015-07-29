@@ -19,7 +19,7 @@ define("DEV", !PROD); // shortcut
 * @example 									Empty if you want to use relative path
 * @example 		/sub-folder					In case of sub-folder hosting
 */
-define("URL", "dev-izymatch");
+define("URL", "");
 
 require(DOCUMENT_ROOT."/core/autoload.php");
 

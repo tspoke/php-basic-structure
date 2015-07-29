@@ -18,9 +18,7 @@ abstract class Controller {
 		if($this->view != null) {
 			$this->before();
 
-			//on envoi les headers
-			foreach($this->headers as $header)
-				header($header);
+			$this->sendHeader();
 			
 			if(!in_array('header', $this->viewExcluded))
 				require(DOCUMENT_ROOT."/views/header.php");
@@ -39,6 +37,11 @@ abstract class Controller {
 		}
 		else
 			Handler::error404("View isn't initialized !");
+	}
+
+	protected function sendHeader(){
+		foreach($this->headers as $header)
+			header($header);
 	}
 	
 	protected function loadModel($model){
@@ -64,16 +67,23 @@ abstract class Controller {
 	}
 	
 	/**
-	* Fonction appelée avant tout rendu
+	* Called before views
 	*/
 	protected function before(){
 		
 	}
 	
 	/**
-	* Fonction appelée après tout rendu
+	* Called after all views
 	*/
 	protected function after(){
 		
+	}
+
+	/**
+	* If the method is call with bad params
+	*/
+	public function defaultParamsError(){
+		Handler::error404("DefaultParamsError : Error calling function with params");
 	}
 }

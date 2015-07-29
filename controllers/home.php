@@ -4,10 +4,11 @@ defined("_uniq_token_") or die('');
 class HomeController extends Controller {
 
 	public function index($loginStatus = null){
-		Includer::add("jS", "test.js");
+		//Includer::add("js", "test.js"); // example to add JS in the fly for a custom page
 		$this->view = "index";
 	}
-	
+
+
 	/**
 	* Exemple de connexion
 	*/

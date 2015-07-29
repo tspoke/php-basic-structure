@@ -14,7 +14,7 @@ if($controller == "")
 $baseControllerName = $controller;
 
 if(!file_exists('controllers/'.$controller.'.php'))
-	Handler::error404("Control doesn't exist");
+	Handler::error404("Unhandled path. Controls doesn't exist");
 
 session_name("yourSessionName");
 session_start();
@@ -40,6 +40,10 @@ if(method_exists($controller, $action)){
 		
 		if($nbr >= $numberOfRequiredParams && $nbr <= $numberOfParams){ //lancement app	
 			call_user_func_array(array($controller, $action), $params);
+			$controller->render();
+		}
+		else if(method_exists($controller, "defaultParamsError")){ // Try to call a default error method if the call fail or if the params number is invalide.
+			call_user_func_array(array($controller, "defaultParamsError"), array());
 			$controller->render();
 		}
 		else {

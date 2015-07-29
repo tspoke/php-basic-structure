@@ -39,8 +39,8 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 <h2>Installation</h2>
 <ol>
 	<li>Téléchargez le dossier complet</li>
-	<li>Copiez le contenu dans votre dossier de développement</li>
-	<li>core/Config.inc : Modifiez vos informations de connexion à la base de données</li>
+	<li>Copiez le contenu dans votre dossier de développement.</li>
+	<li>core/Config.inc : Modifiez vos informations de connexion à la base de données. Apache doit avoir le module rewrite d'activé !</li>
 	<li>core/init.php : Si besoin modifiez l'état du projet (production ou non) et les liens relatifs/absolus</li>
 	<li>Terminé</li>
 </ol>
