@@ -97,7 +97,7 @@ class Includer {
 	*/
 	public static function includeDir($type, $folder, &$result){
 		try {
-			$d = opendir(DOCUMENT_ROOT."/".self::$base[$type].$folder);
+			$d = opendir(DOCUMENT_ROOT.self::$base[$type].$folder);
 			while($entry = @readdir($d)) {
 				if(!is_dir($folder.$entry) AND $entry != "." AND $entry != "..")
 					$result .= self::getHTML($type, self::$base[$type].$folder.$entry);

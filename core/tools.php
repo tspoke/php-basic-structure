@@ -143,7 +143,7 @@ class Tools {
 	*/
 	public static function hash($pass)
 	{
-		return sha1("jL9K7h5zQw.".$pass."_%8uh8m^Pm9p");
+		return sha1("jzaoek,5*9*sd6".$pass."zakl%^diç_Jkdk");
 	}
 	
 	/**
@@ -256,7 +256,7 @@ class Tools {
 	*/
 	public static function checkEmail($email)
 	{
-		if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $email) && self::verifierEmailJetable($email) && strlen(trim($_POST['email'])) <= 100)
+		if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $email) && self::verifierEmailJetable($email) && strlen(trim($email)) <= 100)
 			return true;
 		return false;
 	}
