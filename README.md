@@ -11,8 +11,7 @@ commencer à développer.<br />
 
 Ce framework permet de simplifier les petits développements de sites web en proposant une architecture MVC2 et quelques fonctionnalités de base.
 Il peut également servir de base pour de plus gros développements.<br />
-
-Enfin, vous n'aurez pas besoin de lire 500 pages de documentation pour le comprendre...<br />
+<br />
 </p>
 
 <h2>Remarques</h2>
