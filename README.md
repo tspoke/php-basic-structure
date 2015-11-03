@@ -6,21 +6,18 @@
 
 <h2>Présentation</h2>
 <p>
-Programmer un gros framework MVC avec toutes les couches d'abstractions est redondant et n'a plus d'intérêt avec le nombre de projets qui existent aujourd'hui.<br />
+L'objectif principal de ce projet est de se distinguer des frameworks actuels en ne fournissant qu'une base minimale pour
+commencer à développer.<br />
 
-L'objectif principal de ce projet est de se distinguer des frameworks actuels qui implémentent des couches d'abstraction, des centaines de fichiers et 
-qui oublient qu'un développeur aime 'coder' et non simplement 'utiliser'.<br />
-
-Ce framework permet de simplifier les petits développements de sites web en proposant une architecture MVC. 
-Il peut également servir de base pour de plus gros développements from scratch<br />
+Ce framework permet de simplifier les petits développements de sites web en proposant une architecture MVC2 et quelques fonctionnalités de base.
+Il peut également servir de base pour de plus gros développements.<br />
 
 Enfin, vous n'aurez pas besoin de lire 500 pages de documentation pour le comprendre...<br />
 </p>
 
 <h2>Remarques</h2>
-<p>Je ne jette pas la pierre aux développeurs de gros frameworks, au contraire je respecte énormément les outils qu'ils développent. Je constate juste que beaucoup de développeur amateurs/débutants,
-qui codent pour le plaisir, ne s'y penchent que très rarement. Cela souvent à cause de la complexité et le temps de mise en route de tels outils.<br />
-Utiliser un petit framework permet de tester une nouvelle architecture sans devoir lire des kilomètres de documentation.<br /><br />
+<p>J'ai constaté que beaucoup de développeur amateurs/débutants ne se penchaient pas sur les frameworks en général. Cela souvent à cause de la complexité et le temps de mise en route de tels outils.<br />
+Utiliser un petit framework tel quel celui-ci permet de tester une nouvelle architecture et cela sans devoir lire des kilomètres de documentation. Enfin, cela est une bonne base pour ensuite migrer sur de plus gros environnements tel que Symfony.<br /><br />
 
 Ce framework est codé sans prétention, on peut faire mieux, beaucoup mieux même. D'ailleurs au départ ce n'était qu'un morceau réutilisable que j'utilisais pour mes développements, il 
 n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des gens s'y intéresseraient !</p>
@@ -28,7 +25,7 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 <h2>Principales fonctionnalités</h2>
 <p>Peu de fonctions, mais un framework léger qui vous permet de changer facilement le code pour l'adapter.</p>
 <ul>
-	<li>Architecture MVC</li>
+	<li>Architecture MVC2</li>
 	<li>Réécriture d'URL</li>
 	<li>Classe d'abstraction des modèles et des requêtes simples</li>
 	<li>Outils d'inclusion de CSS et de JS</li>
@@ -40,7 +37,7 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 <ol>
 	<li>Téléchargez le dossier complet</li>
 	<li>Copiez le contenu dans votre dossier de développement.</li>
-	<li>Si le module mod_rewrite n'est pas activé sur Apache, faites le.</li>
+	<li>Si le module mod_rewrite n'est pas activé sur Apache, activez-le.</li>
 	<li>core/config.php : Modifiez vos informations de connexion à la base de données.</li>
 	<li>core/init.php : Si besoin modifiez l'état du projet (production ou non) et les liens des constantes</li>
 	<li>C'est terminé. Des exemples sont programmés dans controllers/example.php</li>
