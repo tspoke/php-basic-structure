@@ -235,4 +235,53 @@ abstract class Model extends ConnectionHandler {
 		return $this->db->lastInsertId();
 	}
 	
+
+
+	#########
+	## UPDATE
+	#########
+
+	/**
+	* met à jour un tuple selectionné avec where avec les données dans params
+	* @param 	$where 		Données pour sélectionner un tuple spécifique (eg: array('id' => 1))
+	* @param 	$params 	Données à modifier (eg: array("value" => 10))
+	*/
+	public function update(array $where, array $params){
+		if(!$this->check($params) OR count($params) == 0)
+			return false;
+
+		return $this->_update($where, $params);
+	}
+
+	protected function _update(array $where, array $params){
+		$sql = "";
+		$values = "";
+		$whereSQL = "";
+
+		// find where
+		foreach($where as $field => $value){
+			if($whereSQL != "")
+				$whereSQL .= " AND ";
+			$whereSQL .= $this->table.".".$field." = :".$field;
+		}
+
+		// values
+		foreach($params as $field => $value){
+			if($values != "")
+				$values .= ", ";
+			$values .= "`".$field."` = :VAL_".$field; // préfixé pour éviter les collisions de noms
+		}
+
+		//BUILD
+		$sql = "UPDATE ".$this->table." SET ".$values." WHERE ".$whereSQL;
+
+		$req = $this->db->prepare($sql);
+		foreach($where as $field => &$value)
+			$req->bindParam(":".$field, $value, PDO::PARAM_STR);
+		foreach($params as $field => &$value)
+			$req->bindParam(":VAL_".$field, $value, PDO::PARAM_STR);
+		$req->execute();
+
+		return $this->db->rowCount();
+	}
 }

@@ -125,11 +125,13 @@ $article = $this->News->last();
 <p>Quelques exemples d'utilisation de la classe Model.php qui doit être étendue par les modèles de votre application. Ces méthodes permettent surtout de simplifier les requêtes SQL de base. Libre à vous de les utiliser.</p>
 
 ```php
-// dans un contrôleur
+// dans un contrôleur on charge le model
 $this->loadModel('User');
+
+// sélection simple
 $user = $this->User->find(array('id' => 1)); // sql = SELECT * FROM user WHERE id = 1 LIMIT 1
 
-// Le deuxième paramètre (5) est optionnel, il permet de limiter le nombre de tuples
+// sélection complexe : le deuxième paramètre (5) est optionnel, il permet de limiter le nombre de tuples
 $users = $this->User->findAll(array('age' => 10, 'taille' => '150'), 5); // SELECT * FROM user WHERE age = 10 AND taille = 150 LIMIT 5
 
 // suppression
@@ -137,6 +139,10 @@ $this->User->delete(array('id' => 1)); // DELETE FROM user WHERE id = 1
 
 // ajout
 $this->User->add(array('age' => 25, 'taille' => 176, 'nom' => 'Spoke')); // INSERT INTO user (age, taille, nom) VALUES (25, 176, 'Spoke')
+
+// modification
+// le premier paramètre est le(s) tuple(s) que vous voulez modifier, le deuxième les valeurs à changer
+$this->User->update(array("id" => 1, "my_key" => 'abc'), array("my_key" => 50, "kikoo" => "abcd"));
 ```
 
 <p>
