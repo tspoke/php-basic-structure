@@ -2,7 +2,11 @@
 defined("_uniq_token_") or die('');
 
 class Api extends Controller {
-	// You should customize this structure depending on you need
+	protected $connectedOnly = false;
+
+	/** 
+	* You should customize this structure depending on you need
+	*/
 	protected $response = array("status" => "success", "code" => 200, "message" => "", "data" => array());
 
 	/**

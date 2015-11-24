@@ -5,10 +5,9 @@ defined("_uniq_token_") or die('');
 * This is an basic example API class to show you how to create it.
 */
 class Apiv1Controller extends Api {
-
 	/**
-	* @Example 	API method
-	* 			URL > /Apiv1/user
+	* @Example 	API 	 method
+	* 			URL 	 /apiv1/user
 	*/
 	public function user(){
 		$this->setSuccess();
@@ -28,6 +27,12 @@ class Apiv1Controller extends Api {
 	// Default method to handle params number error properly.
 	public function defaultParamsError(){
 		$this->setError("The call is incorrect");
+	}
+
+	// for example, using a vendors library called CustomAuth
+	public function usingCustomAuth(){
+		$auth = new \CustomAuth\BasicAuth(null);
+		$auth->auth();
 	}
 
 }

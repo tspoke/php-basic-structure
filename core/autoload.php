@@ -17,7 +17,7 @@ class Autoload {
 			$class = implode("-", $matches);
 		}
 		$class = str_replace('\\', '/', strtolower($class)).".php";
-
+		
 		foreach(self::$folders as $folder){
 			$path = $folder."/".$class;
 			if(file_exists($path)){
@@ -37,3 +37,6 @@ class Autoload {
 }
 
 spl_autoload_register(array('Autoload', 'loader'));
+
+// add others autoload here
+include DOCUMENT_ROOT."/vendors/CustomAuth/autoload.php";
