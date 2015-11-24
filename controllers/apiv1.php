@@ -31,7 +31,7 @@ class Apiv1Controller extends Api {
 
 	// for example, using a vendors library called CustomAuth
 	public function usingCustomAuth(){
-		$auth = new \CustomAuth\BasicAuth(null);
+		$auth = new DigestAuth(null);
 		$auth->auth();
 	}
 

@@ -3,13 +3,17 @@ namespace CustomAuth;
 
 /**
 * Implementation of the basic HTTP connection auth
+* @warning 		You shouldn't use this authentification method, it's unsecured. Try DigestAuth instead.
 */
-class BasicAuth extends \ConnectionHandler implements IAuth {
-	public function __construct(){
-		parent::__construct();
-	}
+abstract class BasicAuth implements IAuth {
 
-	public function auth(array $datas = null){
+	/**
+	* Please provide an implementation of this method in a derived class
+	* @note 	Return null if failed, else the user found
+	*/
+	protected abstract function findUser($login, $password);
+
+	final public function auth(array $datas = null){
 		if (!isset($_SERVER['PHP_AUTH_USER'])) {
 		    return $this->fail();
 		}
@@ -17,11 +21,7 @@ class BasicAuth extends \ConnectionHandler implements IAuth {
 			$login = $_SERVER['PHP_AUTH_USER'];
 			$pass = $_SERVER['PHP_AUTH_PW'];
 
-			$userModel = new \User();
-			$user = $userModel->find(array(
-				"email" => $login,
-				"pass" => \Tools::hash($pass)
-			));
+			$user = $this->findUser($login, $pass);
 			
 			if($user === null)
 				return $this->fail();

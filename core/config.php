@@ -7,6 +7,6 @@ defined("_uniq_token_") or die('');
 define("SQL_USER", "root"); // user
 define("SQL_HOST", "localhost"); // host
 define("SQL_PASS", ""); // password
-define("SQL_DBNAME", "");
+define("SQL_DBNAME", "my_db_name");
 
 ?>
