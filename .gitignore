@@ -1,11 +1,12 @@
-*
-!core/*
-core/config.php
-core/init.php
+/*
+!/core
+!/core/**
+/core/config.php
+/core/init.php
 
-!classes/minifier.php
-!classes/digest-auth.php
-!classes/basic-auth.php
+!/classes/minifier.php
+!/classes/digest-auth.php
+!/classes/basic-auth.php
 
-!index.php
-!.htaccess
+!/index.php
+!/.htaccess
