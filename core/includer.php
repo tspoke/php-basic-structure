@@ -1,4 +1,5 @@
 <?php
+namespace basic\core;
 defined("_uniq_token_") or die('');
 
 class Includer {

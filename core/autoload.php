@@ -1,10 +1,12 @@
 <?php
+namespace basic\core;
 defined("_uniq_token_") or die('');
 
 class Autoload {
 	public static $folders = array(
 		"models"  => "models", 
-		"core"    => "core", 
+		"entities" => "entities",
+		"core"    => "core",
 		"classes" => "classes"
 	);
 	
@@ -36,7 +38,7 @@ class Autoload {
 	}
 }
 
-spl_autoload_register(array('Autoload', 'loader'));
+spl_autoload_register(array('\basic\core\Autoload', 'loader'));
 
 // add others autoload here
 include DOCUMENT_ROOT."/vendors/CustomAuth/autoload.php";

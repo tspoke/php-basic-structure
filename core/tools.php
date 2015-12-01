@@ -1,4 +1,5 @@
 <?php
+namespace basic\core;
 
 /**
 * @class	Tools
