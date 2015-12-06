@@ -4,24 +4,31 @@ defined("_uniq_token_") or die('');
 
 class Autoload {
 	public static $folders = array(
-		"models"  => "models", 
-		"entities" => "entities",
-		"core"    => "core",
-		"classes" => "classes"
+		"basic/models"  => "models", 
+		"basic/entities" => "entities",
+		"basic/core"    => "core",
+		"basic/classes" => "classes",
 	);
 	
 	public static function loader($class) {
 		//si on a une classe que en majuscule, on ne passe pas dans la découpe.
-		if(strtoupper($class) != $class) {
-			$basename = $class;
-			
+		if(strtoupper($class) != $class) {			
 			$matches = preg_split('/(?=[A-Z])/', $class, -1, PREG_SPLIT_NO_EMPTY); 
 			$class = implode("-", $matches);
 		}
+
 		$class = str_replace('\\', '/', strtolower($class)).".php";
-		
-		foreach(self::$folders as $folder){
-			$path = $folder."/".$class;
+		$class = str_replace("/-", "/", $class);
+
+		$dirname  = dirname ($class);
+		$basename  = basename ($class);
+
+		foreach(self::$folders as $namespace => $folder){
+			if($dirname != $namespace)
+				continue;
+
+			$path = $folder."/".$basename;
+			//echo "path : ".$path."<br/>";
 			if(file_exists($path)){
 				require_once($path);
 				break;

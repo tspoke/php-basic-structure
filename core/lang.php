@@ -8,7 +8,7 @@ defined("_uniq_token_") or die('');
 * @example 		views/index.php
 * @note 		If you need to add langages, you have to create a folder in langs/ with the extension of the langage. Then, add here in $LANGS_LIST the extension.
 */
-class LANG {
+class Lang {
  	private static $LANGS_LIST = array("en", "fr",);
  	private static $TYPES = array("models", "views"); // Files type (physical folder in langs/{lang}/)
  	private static $ERRORS = array(	"type" 		=> "LANG::Type not found", 

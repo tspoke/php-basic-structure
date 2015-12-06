@@ -1,7 +1,8 @@
 <?php
+namespace basic\models;
 defined("_uniq_token_") or die('');
 
-class User extends Model {
+class User extends \basic\core\Model {
 	protected $table = "user";
 	
 	// you can add some logic like this here (or elsewhere), feel free to move/modify. Dependencies : in index.php

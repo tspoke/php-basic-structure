@@ -14,7 +14,7 @@ defined("_uniq_token_") or die('');
 	<link href='<?php echo URL; ?>/static/css/common.css' rel='stylesheet' type='text/css' media='screen' />
 	<link href='<?php echo URL; ?>/static/css/design.css' rel='stylesheet' type='text/css' media='screen' />
 	
-	<?php echo Includer::load("css"); ?>
+	<?php echo \basic\core\Includer::load("css"); ?>
 	
 	<link rel='icon' type='image/png' href='<?php echo URL; ?>/static/img/favicon.png'/>
 	

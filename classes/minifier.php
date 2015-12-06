@@ -1,4 +1,5 @@
 <?php
+namespace basic\classes;
 defined("_uniq_token_") or die('');
 
 /**

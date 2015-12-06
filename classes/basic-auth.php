@@ -1,5 +1,5 @@
 <?php
-
+namespace basic\classes;
 /**
 * Implementation of the basic HTTP connection auth
 */

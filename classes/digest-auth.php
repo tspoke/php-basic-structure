@@ -1,4 +1,5 @@
 <?php
+namespace basic\classes;
 
 /**
 * Implementation of the Digest HTTP connection auth

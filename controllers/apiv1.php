@@ -1,10 +1,12 @@
 <?php
+namespace basic\controllers;
+
 defined("_uniq_token_") or die('');
 
 /**
 * This is an basic example API class to show you how to create it.
 */
-class Apiv1Controller extends Api {
+class Apiv1Controller extends \basic\core\Api {
 	/**
 	* @Example 	API 	 method
 	* 			URL 	 /apiv1/user

@@ -19,8 +19,8 @@ if(!file_exists('controllers/'.$controller.'.php'))
 session_name("yourSessionName");
 session_start();
 
-require('controllers/'.$controller.'.php');
-$controller .= "Controller";
+$r = require('controllers/'.$controller.'.php');
+$controller = "\basic\controllers\\".$controller."Controller";
 $controller = new $controller();
 
 if(!method_exists($controller, $action)){
@@ -39,14 +39,14 @@ if(method_exists($controller, $action)){
 		$nbr = count($params);
 		
 		if($nbr >= $numberOfRequiredParams && $nbr <= $numberOfParams){ //lancement app	
-			if(!User::isConnected() && $controller->getConnectedOnly())
+			if(!\basic\models\User::isConnected() && $controller->getConnectedOnly())
 				Handler::error404("This page is restricted"); // change this with your own logic
 
 			call_user_func_array(array($controller, $action), $params);
 			$controller->render();
 		}
 		else if(method_exists($controller, "defaultParamsError")){ // Try to call a default error method if the call fail or if the params number is invalide.
-			if(!User::isConnected() && $controller->getConnectedOnly())
+			if(!\basic\models\User::isConnected() && $controller->getConnectedOnly())
 				Handler::error404("This page is restricted"); // change this with your own logic
 			
 			call_user_func_array(array($controller, "defaultParamsError"), array());

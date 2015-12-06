@@ -1,4 +1,5 @@
 <?php
+namespace basic\controllers;
 defined("_uniq_token_") or die('');
 
 /**
@@ -6,7 +7,7 @@ defined("_uniq_token_") or die('');
 * Every class MUST extends Controller
 * Feel free to remove it :)
 */
-class ExampleController extends Controller {
+class ExampleController extends \basic\core\Controller {
 
 	public function index($param = null){ // you can add params in the url. eg : your-url/example/test => will pass "test" here in $param
 		
