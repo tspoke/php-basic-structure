@@ -8,5 +8,11 @@ class HomeController extends \basic\core\Controller {
 
 	public function index(){
 		$this->view = "index";
+
+		/*
+		$this->loadModel("User");
+		$obj = $this->User->find(['id' => 1]);
+		$this->set("obj", $obj);
+		*/
 	}
 }
