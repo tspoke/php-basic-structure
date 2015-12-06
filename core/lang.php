@@ -84,7 +84,6 @@ class Lang {
 		return $string;
 	}
 
-
 	/**
 	* @brief 	Get the translation for the requested keys
 	* @param 	$type 				File type who ask for the translation (eg : view, model, ...)

@@ -1,5 +1,7 @@
 <?php
 namespace basic\core;
+use PDO;
+
 defined("_uniq_token_") or die('');
 require_once "config.php";
 

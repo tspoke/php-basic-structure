@@ -1,6 +1,5 @@
 <?php
 defined("_uniq_token_") or die('');
-
 ?>
 <!DOCTYPE html>
 <html>

@@ -51,8 +51,9 @@ abstract class Controller {
 		$matches = preg_split('/(?=[A-Z])/', $model, -1, PREG_SPLIT_NO_EMPTY); 
 		$model = implode("-", $matches);
 
- 		require_once(DOCUMENT_ROOT."/models/".strtolower($model).".php");
-		$this->$basename = new $basename();
+ 		// require_once(DOCUMENT_ROOT."/models/".strtolower($model).".php");
+ 		$model = "\basic\models\\".strtolower($model);
+		$this->$basename = new $model();
 	}
 	
 	protected function set($vars, $value = null){
