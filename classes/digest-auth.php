@@ -7,7 +7,7 @@ namespace basic\classes;
 class DigestAuth extends \CustomAuth\DigestAuth {
 	protected function getUserPassword($login, &$user) {
 		// try to retrieve user from db with this login (email)
-		$userModel = new \User();
+		$userModel = new \basic\models\User();
 		$user = $userModel->find(array(
 			"email" => $login
 		));
