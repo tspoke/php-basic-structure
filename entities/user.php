@@ -3,6 +3,8 @@ namespace basic\entities;
 defined("_uniq_token_") or die('');
 
 class User extends \basic\core\Entity {
+	protected $jsonException = array("pass"); // disallow this attribut to be extracted in toArray() parent method
+
 	protected $id;
 	protected $email;
 	protected $pass;

@@ -12,7 +12,7 @@ class HomeController extends \basic\core\Controller {
 		/*
 		$this->loadModel("User");
 		$obj = $this->User->find(['id' => 1]);
-		$this->set("obj", $obj);
+		$this->set("obj", $obj->toArray());
 		*/
 	}
 }
