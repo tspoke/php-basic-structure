@@ -24,12 +24,14 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 <h2>Principales fonctionnalités</h2>
 <p>Peu de fonctions, mais un framework léger qui vous permet de changer facilement le code pour l'adapter.</p>
 <ul>
-	<li>Architecture MVC2</li>
+	<li>Architecture MVC2 avec namespaces</li>
 	<li>Réécriture d'URL</li>
-	<li>Classe d'abstraction des modèles et des requêtes simples</li>
+	<li>Classe d'abstraction des modèles DAO et des requêtes simples</li>
 	<li>Outils d'inclusion de CSS et de JS</li>
 	<li>Autoload de classes</li>
 	<li>Utilisation de PDO</li>
+	<li>Controlleur d'API json extensible</li>
+	<li>Gestion de vendors (libs externes)</li>
 </ul>
 
 <h2>Installation</h2>
@@ -44,12 +46,11 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 
 <h3>Choix techniques</h3>
 <p>
-J'ai fait le choix de programmer en Objet les modèles et les controlleurs.<br /><strong>Attention cependant</strong>, les modèles sont uniquement des wrappers des tables de la base de données.
-Cela signifie qu'on ne manipule aucun objet lorsqu'on parle des données en provenance de la base, ce sont des tableaux PHP par défaut.<br /> 
-Vous pouvez définir une entité par défaut qui sera créée et qui sera hydratée avec un tableau via l'annotation :<br />
-
+Les modèles sont les DAO du framework qui se chargent des appels à la base de données, les entity sont les modèles de réprésentation des données.
+Tous les éléments du framework sont programmés en objet.
+Les modèles (DAO) retournent par contre des tableaux par défaut. Cependant vous pouvez définir une entité par défaut qui sera créée et hydratée avec ce tableau via l'attribut : <br />
+</p>
 ```php
-// Exemple complet d'un controleur
 <?php
 class User extends \basic\core\Model {
 	protected $entity = "\\basic\\entities\\User";
@@ -58,8 +59,6 @@ class User extends \basic\core\Model {
 ?>
 ```
 
-Pour ma part, les tableaux c'est puissant et suffisant.<br /><br />
-</p>
 <p>La classe <strong>Handler</strong> est un proxy pour différentes fonctionnalités/sous-classes (qu'il faut écrire). 
 Je vous invite à réécrire cette classe et à utiliser votre propre gestionnaire d'erreurs et d'exceptions.</p>
 
@@ -79,7 +78,10 @@ Je vous invite à réécrire cette classe et à utiliser votre propre gestionnai
 ```php
 // Exemple complet d'un controleur
 <?php
-class ContactController extends Controller {
+namespace basic\controllers;
+defined("_uniq_token_") or die('');
+
+class ContactController extends \basic\core\Controller
 	
 	// méthode par défaut qui sera appelée
 	public function index(){
@@ -171,8 +173,11 @@ Vous pouvez automatiser une jointure (systématique) en modifiant la variable <b
 </p>
 
 ```php
+namespace basic\models;
+defined("_uniq_token_") or die('');
+
 // dans une classe héritant de model
-class News extends Model {
+class News extends \basic\core\Model {
 	// $start et $end en INTEGER
 	public function getNewsBetweenTwoDates($start, $end){
 		// $this->db est le pointeur vers la connexion
