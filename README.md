@@ -45,8 +45,19 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 <h3>Choix techniques</h3>
 <p>
 J'ai fait le choix de programmer en Objet les modèles et les controlleurs.<br /><strong>Attention cependant</strong>, les modèles sont uniquement des wrappers des tables de la base de données.
-Cela signifie qu'on ne manipule aucun objet lorsqu'on parle des données en provenance de la base, ce sont des tableaux PHP.<br /> 
-Vous pouvez très bien changer le code et implémenter un système de création d'objets si vous avez besoin d'un contrôle des données, voire, à défaut, d'utiliser des StdClass.<br />
+Cela signifie qu'on ne manipule aucun objet lorsqu'on parle des données en provenance de la base, ce sont des tableaux PHP par défaut.<br /> 
+Vous pouvez définir une entité par défaut qui sera créée et qui sera hydratée avec un tableau via l'annotation :<br />
+
+```php
+// Exemple complet d'un controleur
+<?php
+class User extends \basic\core\Model {
+	protected $entity = "\\basic\\entities\\User";
+	...
+}
+?>
+```
+
 Pour ma part, les tableaux c'est puissant et suffisant.<br /><br />
 </p>
 <p>La classe <strong>Handler</strong> est un proxy pour différentes fonctionnalités/sous-classes (qu'il faut écrire). 
