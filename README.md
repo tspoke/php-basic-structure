@@ -17,7 +17,7 @@ Il peut également servir de base pour de plus gros développements.<br />
 <h2>Remarques</h2>
 <p>J'ai constaté que beaucoup de développeur amateurs/débutants ne se penchaient pas sur les frameworks en général. Cela souvent à cause de la complexité et le temps de mise en route de tels outils.<br />
 Utiliser un petit framework tel quel celui-ci permet de tester une nouvelle architecture et cela sans devoir lire des kilomètres de documentation. Enfin, cela est une bonne base pour ensuite migrer sur de plus gros environnements tel que Symfony.<br /><br />
-
+co
 Ce framework est codé sans prétention, on peut faire mieux, beaucoup mieux même. D'ailleurs au départ ce n'était qu'un morceau réutilisable que j'utilisais pour mes développements, il 
 n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des gens s'y intéresseraient !</p>
 
@@ -30,7 +30,7 @@ n'était pas voué à être diffusé. Je l'ajoute à mon github au cas où des g
 	<li>Outils d'inclusion de CSS et de JS</li>
 	<li>Autoload de classes</li>
 	<li>Utilisation de PDO</li>
-	<li>Controlleur d'API json extensible</li>
+	<li>Contrôleur d'API json extensible</li>
 	<li>Gestion de vendors (libs externes)</li>
 </ul>
 
