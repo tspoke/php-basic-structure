@@ -37,27 +37,27 @@ if(method_exists($controller, $action)){
 		$numberOfRequiredParams = $method->getNumberOfRequiredParameters ();
 		$numberOfParams = $method->getNumberOfParameters ();
 		$nbr = count($params);
-		
-		if($nbr >= $numberOfRequiredParams && $nbr <= $numberOfParams){ //lancement app	
-			if(!\basic\models\User::isConnected() && $controller->getConnectedOnly())
-				\basic\core\Handler::error404("This page is restricted"); // change this with your own logic
-
-			call_user_func_array(array($controller, $action), $params);
-			$controller->render();
-		}
-		else if(method_exists($controller, "defaultParamsError")){ // Try to call a default error method if the call fail or if the params number is invalide.
-			if(!\basic\models\User::isConnected() && $controller->getConnectedOnly())
-				\basic\core\Handler::error404("This page is restricted"); // change this with your own logic
-			
-			call_user_func_array(array($controller, "defaultParamsError"), array());
-			$controller->render();
-		}
-		else {
-			\basic\core\Handler::error404("Error calling function with params");
-		}
 	}
 	catch (Exception $e){
 		\basic\core\Handler::error404("PHP Exception : ".$e);
+	}
+		
+	if($nbr >= $numberOfRequiredParams && $nbr <= $numberOfParams){ //lancement app	
+		if(!\basic\models\User::isConnected() && $controller->getConnectedOnly())
+			\basic\core\Handler::error404("This page is restricted"); // change this with your own logic
+
+		call_user_func_array(array($controller, $action), $params);
+		$controller->render();
+	}
+	else if(method_exists($controller, "defaultParamsError")){ // Try to call a default error method if the call fail or if the params number is invalide.
+		if(!\basic\models\User::isConnected() && $controller->getConnectedOnly())
+			\basic\core\Handler::error404("This page is restricted"); // change this with your own logic
+		
+		call_user_func_array(array($controller, "defaultParamsError"), array());
+		$controller->render();
+	}
+	else {
+		\basic\core\Handler::error404("Error calling function with params");
 	}
 }
 else

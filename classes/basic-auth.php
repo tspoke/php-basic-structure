@@ -6,10 +6,10 @@ namespace basic\classes;
 class BasicAuth extends \CustomAuth\BasicAuth {
 	
 	protected function findUser($login, $pass){
-		$userModel = new \User();
+		$userModel = new \basic\models\User();
 		$user = $userModel->find(array(
 			"email" => $login,
-			"pass" => \Tools::hash($pass)
+			"pass" => \basic\core\Tools::hash($pass)
 		));
 
 		return $user;

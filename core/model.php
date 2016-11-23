@@ -24,6 +24,8 @@ abstract class Model extends ConnectionHandler {
 	* @note 	Cette variable NE DOIT PAS être modifiable par le client !
 	*/
 	protected $dependencies = array();
+	protected $entity = null;
+	protected $table = null;
 	
 
 	public function __construct(){
@@ -42,6 +44,26 @@ abstract class Model extends ConnectionHandler {
 
 
 	#########
+	#### ENTITIES PLUGIN
+	#########
+
+	protected function toEntity($datas){
+		if($this->entity == null)
+			return $datas;
+		return new $this->entity($datas);
+	}
+
+	protected function toEntities($datas){
+		if($this->entity == null)
+			return $datas;
+
+		$result = array();
+		foreach($datas as $data)
+			$result[] = new $this->entity($data);
+		return $result;
+	}
+
+	#########
 	#### FIND
 	#########
 	
@@ -50,23 +72,28 @@ abstract class Model extends ConnectionHandler {
 	*/
 	public function find(array $params, $limit = 1){
 		$data = $this->_findJoin($params, $limit);
-		if(isset($data) AND isset($data[0]) AND $limit == 1)
-			return $data[0];
-		else if($limit == 1)
+
+		if($data == null || $data[0] == null)
 			return null;
+		if(isset($data) AND isset($data[0]) AND $limit == 1)
+			return  $this->toEntity($data[0]);
 			
-		return $data;
+		return $this->toEntities($data);
 	}
 	
 	/**
 	* Retourne tous les tuples correspondants à $params
 	*/
 	public function findAll(array $params = null, $limit = 999999){
-		if(!is_null($params))
-			return $this->_findJoin($params, $limit);
+		if(!is_null($params)){
+			if($limit == 1)
+				return $this->toEntity($this->_findJoin($params, $limit));
+			else
+				return $this->toEntities($this->_findJoin($params, $limit));
+		}
 		
-		$req = $this->bdd->query("SELECT * FROM ".$this->table." LIMIT ".intval($limit));
-		return $req->fetchAll();
+		$req = $this->db->query("SELECT * FROM ".$this->table." LIMIT ".intval($limit));
+		return $this->toEntities($req->fetchAll());
 	}
 
 	/**
